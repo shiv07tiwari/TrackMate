@@ -30,8 +30,8 @@ public class SignInActivity extends AppCompatActivity {
         super.onStart();
         auth = FirebaseAuth.getInstance();
         if(auth.getCurrentUser()!=null) {
-            Intent intent = new Intent(SignInActivity.this, MainActivity.class);
-            startActivity(intent);
+           // Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+           // startActivity(intent);
             finish();
         }
     }
@@ -53,7 +53,7 @@ public class SignInActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
+                //startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
                 finish();
             }
         });
@@ -88,13 +88,13 @@ public class SignInActivity extends AppCompatActivity {
                                 if (!task.isSuccessful()) {
                                     // there was an error
                                     if (password.length() < 6) {
-                                        pass.setError(getString(R.string.minimum_password));
+                                        pass.setError("Min Password");
                                     } else {
-                                        Toast.makeText(SignInActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+                                        Toast.makeText(SignInActivity.this, "Failed", Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Intent intent = new Intent(SignInActivity.this, MainActivity.class);
-                                    startActivity(intent);
+                                    //Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+                                    //startActivity(intent);
                                     finish();
                                 }
                             }
