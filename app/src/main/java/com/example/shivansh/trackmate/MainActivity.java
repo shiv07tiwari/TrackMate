@@ -3,12 +3,18 @@ package com.example.shivansh.trackmate;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,9 +24,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private RecyclerView mRecyclerView;
+    final ArrayList<Requests> myDataset = new ArrayList<>();
+    private RecyclerView.Adapter mAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         auth = FirebaseAuth.getInstance();
@@ -36,6 +49,97 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this,"Error",Toast.LENGTH_LONG).show();
         }
         setContentView(R.layout.activity_main);
+        mRecyclerView = findViewById(R.id.request_list);
+        final ProgressBar progress = findViewById(R.id.progress_bar);
+        FloatingActionButton fab = findViewById(R.id.new_request);
+        final Button openMap = findViewById(R.id.open_map);
+
+        if (type == 0) {
+            fab.setVisibility(View.GONE);
+            openMap.setVisibility(View.GONE);
+            mRecyclerView.setHasFixedSize(true);
+            mRecyclerView.setVisibility(View.GONE);
+            mLayoutManager = new LinearLayoutManager(this);
+            mRecyclerView.setLayoutManager(mLayoutManager);
+
+            final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("request");
+            Log.e("dada",auth.getCurrentUser().getEmail());
+            mDatabase.orderByChild("professor").equalTo(auth.getCurrentUser().getEmail()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    myDataset.clear();
+                    progress.setVisibility(View.VISIBLE);
+                    Log.e("size", String.valueOf(snapshot.getChildrenCount()));
+                    for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                        Requests trans = postSnapshot.getValue(Requests.class);
+                        myDataset.add(trans);
+                    }
+                    Collections.reverse(myDataset);
+                    if (myDataset.size()==0) {
+                        progress.setVisibility(View.GONE);
+                        mRecyclerView.setVisibility(View.GONE);
+                        openMap.setVisibility(View.VISIBLE);
+                    } else {
+                        progress.setVisibility(View.GONE);
+                        mRecyclerView.setVisibility(View.VISIBLE);
+                        openMap.setVisibility(View.VISIBLE);
+                    }
+                    mAdapter = new ListAdapter(myDataset,getApplicationContext());
+                    mRecyclerView.setAdapter(mAdapter);
+                }
+                @Override
+                public void onCancelled(DatabaseError firebaseError) {
+                    /*
+                     * You may print the error message.
+                     **/
+                }
+            });
+        } else if (type == 1) {
+            mRecyclerView.setVisibility(View.GONE);
+            openMap.setVisibility(View.GONE);
+            fab.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this, NewRequestActivity.class));
+                }
+            });
+            mRecyclerView.setHasFixedSize(true);
+            mRecyclerView.setVisibility(View.GONE);
+            mLayoutManager = new LinearLayoutManager(this);
+            mRecyclerView.setLayoutManager(mLayoutManager);
+
+            final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("request");
+            Log.e("dada",auth.getCurrentUser().getEmail());
+            mDatabase.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    myDataset.clear();
+                    progress.setVisibility(View.VISIBLE);
+                    Log.e("size", String.valueOf(snapshot.getChildrenCount()));
+                    for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                        Requests trans = postSnapshot.getValue(Requests.class);
+                        myDataset.add(trans);
+                    }
+                    Collections.reverse(myDataset);
+                    if (myDataset.size()==0) {
+                        progress.setVisibility(View.GONE);
+                        mRecyclerView.setVisibility(View.GONE);
+                        openMap.setVisibility(View.VISIBLE);
+                    } else {
+                        progress.setVisibility(View.GONE);
+                        mRecyclerView.setVisibility(View.VISIBLE);
+                        openMap.setVisibility(View.VISIBLE);
+                    }
+                    mAdapter = new ListAdapter2(myDataset,getApplicationContext());
+                    mRecyclerView.setAdapter(mAdapter);
+                }
+                @Override
+                public void onCancelled(DatabaseError firebaseError) {
+                    /*
+                     * You may print the error message.
+                     **/
+                }
+            });
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

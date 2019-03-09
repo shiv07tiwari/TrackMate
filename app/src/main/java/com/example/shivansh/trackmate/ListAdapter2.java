@@ -40,7 +40,7 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.MyViewHolder
     public ListAdapter2.MyViewHolder onCreateViewHolder(ViewGroup parent,
                                                        int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.request_view, parent, false);
+                .inflate(R.layout.recieve_view, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -57,11 +57,10 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.MyViewHolder
             holder.status.setTextColor(ContextCompat.getColor(mContext, R.color.green));
             holder.status.setText("Status : Approved");
         }
-        holder.status.setText(mDataset.get(i).getStatus());
-        holder.professor.setText(mDataset.get(i).getProfessor());
+        holder.professor.setText("Professor : "+mDataset.get(i).getProfessor());
         holder.description.setText(mDataset.get(i).getReieve());
-        holder.date.setText(mDataset.get(i).getSendDate());
-        holder.time.setText(mDataset.get(i).getSendTime());
+        holder.date.setText("Date : "+mDataset.get(i).getRecieveDate());
+        holder.time.setText("Time : "+mDataset.get(i).getRecieveTime());
     }
 
     @Override
