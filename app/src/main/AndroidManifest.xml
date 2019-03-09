@@ -37,6 +37,7 @@
         </activity>
         <activity android:name=".SignUp" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".NewRequestActivity"></activity>
     </application>
 
 </manifest>

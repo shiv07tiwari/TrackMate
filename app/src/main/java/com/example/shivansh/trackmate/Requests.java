@@ -11,19 +11,20 @@ public class Requests {
         this.regarding = regarding;
     }
 
-    public Requests(String send, String reieve, String professor, String student, String roll, String status, String sendDate, String sendTime, String recieveDate, String recieveTime, String regarding) {
+    public Requests(String send, String recieve, String professor, String student, String roll, String status, String sendDate, String sendTime, String recieveDate, String recieveTime, String regarding) {
         this.send = send;
         this.regarding = regarding;
         this.sendDate=sendDate;
         this.recieveDate=recieveDate;
         this.sendTime=sendTime;
         this.recieveTime=recieveTime;
-        this.reieve = reieve;
+        this.reieve = recieve;
         this.professor = professor;
         this.student = student;
         this.roll = roll;
         this.status = status;
     }
+    Requests() {}
 
     public String getSend() {
         return send;

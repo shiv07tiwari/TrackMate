@@ -115,7 +115,7 @@ public class SignUp extends AppCompatActivity {
                                     if (userType[0] == 0) {
                                         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("professor");
                                         String uname = name.getText().toString();
-                                        Professor p = new Professor(uname,email,"Offline","Nothing to show",false,false,userType[0]);
+                                        Professor p = new Professor(uname,email,"Offline","Nothing to show",false,userType[0]);
                                         mDatabase.child(t).setValue(p);
                                         startActivity(new Intent(SignUp.this, MainActivity.class));
                                         finish();
