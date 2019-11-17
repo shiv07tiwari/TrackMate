@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "553969521908",
+    "firebase_url": "https://trackmate-c66f6.firebaseio.com",
+    "project_id": "trackmate-c66f6",
+    "storage_bucket": "trackmate-c66f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:553969521908:android:f3807beacdc0d6e2",
+        "android_client_info": {
+          "package_name": "com.example.shivansh.trackmate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "553969521908-jbefto8aopdmf3dj9as9g4n3kbhepghh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOVK-AmbfcPNt3dH5nwzU5QXGYDF2wGmU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

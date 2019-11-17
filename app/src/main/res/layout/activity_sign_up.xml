@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".SignUp"
+    tools:showIn="@layout/activity_sign_up">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:paddingTop="50dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:src="@drawable/user"/>
+            <EditText
+                android:layout_width="350dp"
+                android:layout_margin="10dp"
+                android:id="@+id/signup_name"
+                android:hint="Name"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:layout_width="350dp"
+                android:layout_margin="10dp"
+                android:id="@+id/signup_id"
+                android:hint="E-Mail ID"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:layout_width="350dp"
+                android:layout_margin="10dp"
+                android:id="@+id/signup_password"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:layout_width="350dp"
+                android:layout_margin="10dp"
+                android:visibility="gone"
+                android:id="@+id/roll_no"
+                android:hint="Roll Number"
+                android:layout_height="wrap_content" />
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/RGroup">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Professor"
+                    android:id="@+id/radio_proff"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Student"
+                    android:id="@+id/radio_student"/>
+            </RadioGroup>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:background="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:id="@+id/signup_register"
+                android:text="Register"
+                android:layout_marginRight="10dp" />
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/signup_progress"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:id="@+id/already"
+                android:text="Already Registered ? Sign In instead !"/>
+        </LinearLayout>
+
+    </ScrollView>
+</FrameLayout>

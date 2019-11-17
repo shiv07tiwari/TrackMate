@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:gravity="center"
+    android:background="@color/white"
+    android:layout_margin="25dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/dia_name"
+        android:textColor="@color/black"
+        android:text="Name : Loading..." />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dia_mail"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:text="Email Address : Loading..."/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:textColor="@color/green"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"
+        android:id="@+id/dia_status"
+        android:text="Current Status : Loading..." />
+    <TextView
+        android:layout_width="wrap_content"
+        android:textColor="@color/green"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"
+        android:id="@+id/dia_location"
+        android:text="Current Location : Loading..." />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:id="@+id/dia_time"
+        android:text="Last Location Update on : Loading..."/>
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="20dp"
+        android:id="@+id/okay_button"
+        android:backgroundTint="@color/white"/>
+</LinearLayout>

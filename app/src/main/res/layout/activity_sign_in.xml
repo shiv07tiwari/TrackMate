@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".SignInActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:paddingTop="50dp"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:src="@drawable/user"/>
+            <EditText
+                android:layout_width="350dp"
+                android:layout_margin="10dp"
+                android:id="@+id/signin_id"
+                android:hint="User Id"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:layout_width="350dp"
+                android:layout_margin="10dp"
+                android:id="@+id/signin_password"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:layout_height="wrap_content" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/white"
+                android:background="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/signin_login"
+                android:text="Login"/>
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/signin_progress"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:id="@+id/already"
+                android:text="Not registered ? Sign Up Instead !"/>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
